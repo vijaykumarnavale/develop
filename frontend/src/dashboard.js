@@ -1,53 +1,66 @@
-
+// Dashboard.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Dashboard() {
     const [products, setProducts] = useState([]);
-    const [product, setProduct] = useState({ name: '', category: '', price: 0, stock: 0 });
-
-    const fetchProducts = async () => {
-        const response = await axios.get('http://localhost:5000/api/products');
-        setProducts(response.data);
-    };
+    const [formData, setFormData] = useState({
+        name: '',
+        category: '',
+        price: '',
+        stock: ''
+    });
 
     useEffect(() => {
         fetchProducts();
     }, []);
 
-    const handleAddProduct = async (e) => {
-        e.preventDefault();
+    const fetchProducts = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/products', product);
-            alert(response.data.message);
-            fetchProducts();  // Refresh list after adding
+            const response = await axios.get('http://localhost:5000/api/products');
+            setProducts(response.data);
         } catch (error) {
-            alert(error.response.data.message);
+            console.error("Error fetching products:", error);
         }
     };
 
-    const handleChange = (e) => {
-        setProduct({ ...product, [e.target.name]: e.target.value });
+    const handleInputChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post('http://localhost:5000/api/products', formData);
+            alert("Product added successfully");
+            setFormData({ name: '', category: '', price: '', stock: '' });
+            fetchProducts();
+        } catch (error) {
+            alert("Failed to add product");
+        }
     };
 
     return (
         <div>
-            <h2>Product Dashboard</h2>
-            <button onClick={fetchProducts}>Refresh</button>
+            <h1>Dashboard</h1>
+            <form onSubmit={handleSubmit}>
+                <input name="name" placeholder="Product Name" value={formData.name} onChange={handleInputChange} required />
+                <input name="category" placeholder="Category" value={formData.category} onChange={handleInputChange} required />
+                <input name="price" type="number" placeholder="Price" value={formData.price} onChange={handleInputChange} required />
+                <input name="stock" type="number" placeholder="Stock Quantity" value={formData.stock} onChange={handleInputChange} required />
+                <button type="submit">Add Product</button>
+            </form>
+            <button onClick={fetchProducts}>Refresh Products</button>
             <ul>
-                {products.map((product) => (
-                    <li key={product.id}>
-                        {product.name} - {product.category} - ${product.price} - Stock: {product.stock}
+                {products.map((product, index) => (
+                    <li key={index}>
+                        {product.name} - {product.category} - Rs{product.price} - {product.stock} in stock
                     </li>
                 ))}
             </ul>
-            <form onSubmit={handleAddProduct}>
-                <input name="name" placeholder="Name" onChange={handleChange} required />
-                <input name="category" placeholder="Category" onChange={handleChange} required />
-                <input name="price" type="number" placeholder="Price" onChange={handleChange} required />
-                <input name="stock" type="number" placeholder="Stock" onChange={handleChange} required />
-                <button type="submit">Add Product</button>
-            </form>
         </div>
     );
 }
