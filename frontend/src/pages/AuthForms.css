@@ -1,0 +1,96 @@
+.auth-form {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input,
+  select {
+    width: 95%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #fc481f;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+  }
+  
+  .error {
+    color: red;
+    margin-bottom: 10px;
+  }
+  
+  .success {
+    color: rgb(0, 131, 0);
+    margin-bottom: 10px;
+  }
+  
+  .forgot-password-link {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    display: inline-block;
+  }
+  
+  .forgot-password-link:hover {
+    color: #0056b3;
+  }
+  /* Style for the input container with icons */
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Style for the icon inside the input field */
+.input-with-icon .input-icon {
+  position: absolute;
+  left: 10px; /* Space between icon and input text */
+  color: #888; /* Icon color */
+  font-size: 18px; /* Icon size */
+  pointer-events: none; /* Prevents clicks on the icon */
+}
+
+/* Style for the input field to provide space for the icon */
+.input-with-icon input {
+  width: 100%;
+  padding-left: 30px; /* Adjust padding to make space for the icon */
+}
+
+/* Optional: Change icon color on focus */
+.input-with-icon input:focus + .input-icon {
+  color: #fc481f; /* Color of the icon when input is focused */
+}

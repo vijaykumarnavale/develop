@@ -1,0 +1,100 @@
+.upload-message {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.success-file {
+  color: blue;  /* File name will be in blue color when upload is successful */
+}
+
+.file-name {
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.upload-box {
+  border: 2px dashed #ccc;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 50%;
+  margin-left: 300px;
+}
+
+.upload-box-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.upload-btn-container {
+  text-align: center;
+  margin-top: 20px;
+  width: 130px;
+  margin-left: 550px;
+}
+
+.upload-btn {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.upload-btn:hover {
+  background-color: #45a049;
+}
+
+.upload-status {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #ccc;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.progress-bar.success {
+  background-color: green;
+}
+
+.progress-bar.error {
+  background-color: red;
+}
+
+.progress-bar.uploading {
+  background-color: yellow;
+}
+
+.progress-text {
+  margin-left: 10px;
+  font-weight: 500;
+  color: blue;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: red;
+}
+
+.delete-btn:hover {
+  color: darkred;
+}
+
+.view-file-link {
+  color: blue;
+}
+.file-info{
+  color:red;
+}
